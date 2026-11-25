@@ -1,0 +1,76 @@
+{
+  "series": [
+    {
+      "order": 1,
+      "name": "立绘柄",
+      "cover": "assets/img/uploads/series-stand2.png",
+      "slug": "lihui"
+    },
+    {
+      "order": 2,
+      "name": "CG柄",
+      "slug": "cg",
+      "cover": "assets/img/uploads/series-cg.jpg"
+    },
+    {
+      "order": 3,
+      "name": "FD主视觉图",
+      "slug": "huimou",
+      "cover": "assets/img/uploads/series-glance.jpg"
+    },
+    {
+      "order": 4,
+      "name": "FD繁中新绘",
+      "slug": "fdfzxh",
+      "cover": "assets/img/uploads/series-fdfzxh.png"
+    },
+    {
+      "order": 5,
+      "name": "QQR",
+      "slug": "qqr",
+      "cover": "assets/img/uploads/serious-qqr.png"
+    },
+    {
+      "order": 6,
+      "name": "幼年柄",
+      "slug": "younian",
+      "cover": "assets/img/uploads/series-25fall.png"
+    },
+    {
+      "order": 7,
+      "name": "执事柄",
+      "slug": "zhishi",
+      "cover": "assets/img/uploads/series-25winter.png"
+    },
+    {
+      "order": 8,
+      "name": "海军柄",
+      "slug": "haijun",
+      "cover": "assets/img/uploads/series-26sum.png"
+    },
+    {
+      "order": 6,
+      "name": "香薰柄",
+      "slug": "xiangxun",
+      "cover": "assets/img/uploads/series-lova.png"
+    },
+    {
+      "order": 10,
+      "name": "公式书柄",
+      "slug": "book",
+      "cover": "assets/img/uploads/series-book.png"
+    },
+    {
+      "order": 11,
+      "name": "猫猫柄",
+      "cover": "assets/img/uploads/猫猫柄.png",
+      "slug": "maomao"
+    },
+    {
+      "order": 12,
+      "name": "其他",
+      "slug": "qita",
+      "cover": "assets/img/uploads/series-other.png"
+    }
+  ]
+}

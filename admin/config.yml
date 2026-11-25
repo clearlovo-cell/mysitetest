@@ -1,0 +1,98 @@
+backend:
+  name: github
+  repo: clearlovo-cell/fuen-catalog
+  branch: main
+  base_url: https://fuen-oauth.lovoclear.workers.dev
+  auth_endpoint: auth
+
+publish_mode: simple
+site_url: https://fuenatlas.cn
+locale: zh_Hans
+
+media_folder: "assets/img/uploads"
+public_folder: "./assets/img/uploads"
+
+collections:
+  - name: settings
+    label: 网站设置
+    description: 维护前台使用说明，保存后随网站一起更新。
+    files:
+      - name: site
+        label: 使用说明
+        file: data/site.json
+        fields:
+          - name: guide
+            label: 使用说明正文
+            widget: text
+            hint: "直接填写说明文字；空一行可分段。访客点击顶部“说明”即可看到。"
+
+  - name: series
+    label: 柄图系列
+    description: 新增系列只需在这里添加一项，前台横滑条会自动更新。
+    files:
+      - name: series
+        label: 系列列表
+        file: data/series.json
+        fields:
+          - name: series
+            label: 系列
+            widget: list
+            fields:
+              - { name: name, label: 系列名, widget: string }
+              - { name: slug, label: URL 标识, widget: string, hint: "仅使用小写英文、数字与连字符，例如 formula、chibi。" }
+              - name: cover
+                label: 系列封面
+                widget: image
+                hint: "建议 ≥400×400px，单张 ≤5MB。"
+              - { name: note, label: 备注, widget: text, required: false }
+              - { name: order, label: 排序权重, widget: number, value_type: int, default: 10, hint: "数字越小越靠前。" }
+
+  - name: goods
+    label: 谷子
+    description: 维护所有制品记录。
+    files:
+      - name: goods
+        label: 谷子列表
+        file: data/goods.json
+        fields:
+          - name: goods
+            label: 谷子
+            widget: list
+            add_to_top: true
+            fields:
+              - { name: name, label: 制品名称, widget: string }
+              - { name: id, label: 唯一 ID, widget: uuid }
+              - name: series
+                label: 柄图系列
+                widget: relation
+                collection: series
+                file: series
+                value_field: "series.*.slug"
+                display_fields: ["series.*.name"]
+                search_fields: ["series.*.name"]
+              - name: type
+                label: 制品类型
+                widget: select
+                options: [吧唧, 立牌, 透卡, 色纸, 挂件, 相卡, 拍立得, 留言卡, ID卡, 书签, 镭射票, 珠光卡, 杂志, 杯垫, 其他]
+              - name: platforms
+                label: 发售平台
+                widget: select
+                multiple: true
+                options: [Otomate, Joyoland, StellaWorth, Alice, Ebten, oioi, Wondergoo, Neowing, Gamecity, Trader, Challe, B's-log, Coolb, 宝岛, 乐天, Trangle Teezer, Lovaroma, 其他]
+              - name: event
+                label: event
+                widget: select
+                options: [本篇店特, FD店特, 本篇繁中限定, FD繁中限定, 夏市, 秋风, 冬市, 甜品趴, OTP, AGF, 亚洲限定, 联名, 其他]
+              - { name: year, label: 发售年份, widget: number, value_type: int, min: 2000, max: 2100 }
+              - { name: date, label: 具体发售日, widget: date, format: "YYYY-MM-DD", required: false }
+              - { name: price, label: 日元定价, widget: number, value_type: int, min: 0, required: false }
+              - { name: status, label: 当前状态, widget: select, options: [长期通贩, 受付中, 受注终了, 情报公开, 完售], default: 情报公开 }
+              - { name: release_type, label: 发售性质, widget: select, options: [初版, 复刻], default: 初版 }
+              - { name: character, label: 角色, widget: hidden, default: 斐恩 }
+              - { name: size, label: 尺寸, widget: string, required: false, hint: "格式统一为：H56×W56mm 或 Φ56mm，多种尺寸用分号分隔。" }
+              - { name: material, label: 材质, widget: string, required: false, hint: "如：马口铁、亚克力、纸、涤纶，多种用顿号分隔。" }
+              - name: image
+                label: 制品图片
+                widget: image
+                hint: "建议 ≥800×800px，单张 ≤5MB；按所选系列 slug 自动分文件夹。"
+              - { name: note, label: 备注, widget: text, required: false }
